@@ -1,0 +1,1 @@
+export const SET_HOME_INFO = "set_home_info"
