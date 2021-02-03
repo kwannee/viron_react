@@ -1,9 +1,10 @@
 import React,{useEffect,useState} from 'react'
-import {Container,Row,Col} from 'react-bootstrap'
+import {Container,Row,Col,Spinner} from 'react-bootstrap'
 import NewsModal from './NewsModal'
 import {FaClone} from 'react-icons/fa'
 function NewsPage() {
     const [fetched, setFetched] = useState([])
+    const [loading, setLoading] = useState(false)
     useEffect(
         () => {
         fetch('https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,username,timestamp,children,user_profile&access_token=IGQVJXV1Jra1ZAHXzVxeTVoOVNHcWoyaFQwOGlzSEFJRnJqVUNFclVMVktUbUUtTmFlNFZASelg2eXNvZAUlFUW81V2djNkJaTXl5OGhmQWpxOUNZATmZAZAWFB5OHZAQVmhPVTNjWkdTZAWFPRkIzZAFkwMk5vdgZDZD')
@@ -13,8 +14,11 @@ function NewsPage() {
         })
     }, [])
     return (
-        <div>
-            <Container style={{padding:0,margin:0,maxWidth:'unset',paddingRight:'2rem'}}>
+        <div >
+            {/* <Spinner style={{display:!loading ? 'block' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner> */}
+            <Container className={"animate__animated animate__slideInRight"} style={{padding:0,margin:0,maxWidth:'unset',paddingRight:'2rem'}}>
                 <Row>
                 {
                     fetched.map((item,idx) => (

@@ -2,9 +2,12 @@ import React,{useState,useEffect} from 'react'
 import {Button,CardColumns,Card,Modal,Form,InputGroup,FormControl} from 'react-bootstrap'
 import firebase from '../../firebase'
 import Upload from './utils/Upload'
+import {useForm} from 'react-hook-form'
+
 import {AiOutlinePlusCircle} from 'react-icons/ai'
 
 function ProjectsManage() {
+    const {register,watch,errors,handleSubmit} =useForm();
     const [years, setYears] = useState([])
     const [yearShow, setYearShow] = useState(false)
     const [urls,setUrls] = useState([])
@@ -63,7 +66,7 @@ function ProjectsManage() {
         setShow(true)
     }
     const handleNewYearChange =(e) =>{
-        setNewYear(e.target.value)
+        // setNewYear(e.target.value)
     }
     const handleYearAddSubmitClick = () =>{
         // 이거 할려면 새 년도 만들때 애초에 파일을 같이 업로드 해야함 아니면 폴더 삭제됨.
@@ -101,6 +104,7 @@ function ProjectsManage() {
             window.location.reload(false);
         }
     }
+    console.log(newYear)
     return (
         <div style={{}}>
             <div style={{display:'flex',justifyContent:'flex-start',width:'50%',margin:'0 auto',alignItems:'center'}}>
@@ -110,23 +114,22 @@ function ProjectsManage() {
                 ))
             }
              <Button onClick={() => setYearShow(!yearShow)} style={{margin:'1rem 3px'}} variant="dark">년도 추가</Button>
-             <InputGroup style={{display: !yearShow ? 'none':'flex',alignItems:'center',width:'300px',margin:'1rem 3px'}} className="mb-3">
-                <FormControl
-                placeholder="새로운 년도를 입력하세요"
-                aria-label="새로운 년도를 입력하세요"
-                aria-describedby="basic-addon2"
-                onChange={handleNewYearChange}
-                />
-                <InputGroup.Append>
-                    <Button onClick={handleYearAddSubmitClick} variant="outline-secondary">추가</Button>
-                </InputGroup.Append>
-            </InputGroup>
+             <form style={{display: !yearShow ? 'none':'flex',margin:'0 1rem',alignItems:'center'}} onSubmit={handleSubmit(handleNewYearChange)}>
+                    <label>년도</label>
+                    <input
+                        onChange={(e)=>setNewYear(e.target.value)}
+                        name="name"
+                        ref={register({ required: true })}
+                    />
+                    <input onClick={()=>setShow(true)} type="submit"/>
+                    {errors.name && errors.name.type==="required" && <p>년도를 입력해주세요</p>}
+                </form>
             </div>
             <CardColumns style={{padding:'1rem 0',width:'50%',margin:'0 auto'}}>
                     {
                         urls.map((item)=>(
                                 <Card onClick={()=>handleProjectClick(item)} className={"projectWrapper"} style={{border:'none'}}>
-                                    <Card.Img style={{filter:'grayscale(80%)'}} className={"projectImage"} variant="top" src={item.url} fluid/>
+                                    <Card.Img style={{filter:'grayscale(80%)'}} className={"projectImage"} variant="top" src={item.url}/>
                                     <Card.Body>
                                     <Card.Title>{item.name}</Card.Title>
   

@@ -21,7 +21,7 @@ function NewsModal({data}) {
     }, [])
     return (
         <div>
-           <Image onClick={handleShow} style={{width:'100%',height:'auto'}} src={data.media_url}/>
+           <Image className={"modalImage"} onClick={handleShow} style={{width:'100%',height:'auto'}} src={data.media_url}/>
            <Modal centered size={'lg'} show={show} onHide={handleClose}>
             <Modal.Header closeButton/>
             <div style={{display:'flex',flexDirection:'row'}}>

@@ -1,11 +1,12 @@
 import React,{useEffect,useState} from 'react'
 import firebase from '../../firebase'
-import {Card,Container,Row,Col,Image} from 'react-bootstrap'
+import {Card,Container,Row,Col,Image,Spinner} from 'react-bootstrap'
 import SlideToggle from "react-slide-toggle";
 import PeopleDesc from './PeopleDesc'
 
 export default function PeoplePage() {
     const [imageUrl, setImageUrl] = useState([])
+    const [loading, setLoading] = useState(false)
     useEffect(
         () => {
         firebase.storage().ref('People/').listAll().then(async res =>{
@@ -22,15 +23,20 @@ export default function PeoplePage() {
         }else{
             e.target.classList.remove('colorful')
         }
-
     }
+    setTimeout(() => {
+        setLoading(true)
+    }, 1500);
     return (
-        <div>
-            <Container fluid style={{display:'flex',justifyContent:'center',alignItems:'center',margin:0,padding:0,paddingTop:'1rem'}}>
+        <div style={{display:'flex',justifyContent:'center',alignItems:'center', margin:'1  rem'}}>
+            <Spinner style={{display:!loading ? 'flex' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner>
+            <Container fluid style={{display:loading ? 'flex' : 'none',justifyContent:'center',alignItems:'center',margin:0,padding:0,paddingTop:'1rem',overflow:'hidden'}}>
                <Row style={{margin:0}}>
                {
                 imageUrl.map((info,idx)=>(
-                <Col onClick={handlePeopleClick} style={{margin:0,padding:0,paddingBottom:'1rem'}} xl={3} lg={4} md={6} xs={9}>
+                <Col  className={"animate__animated animate__fadeInUp animate"+Math.round(Math.random()*7)} key={idx} onClick={handlePeopleClick} style={{margin:0,padding:0,paddingBottom:'1rem'}} xl={3} lg={4} md={6} xs={9}>
                     <SlideToggle collapsed duration={350}>
                         {({ toggle, setCollapsibleElement }) => (
                             <div className="my-collapsible">

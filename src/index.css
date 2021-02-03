@@ -165,3 +165,6 @@ code {
 .projectImg:hover{
   cursor: pointer;
 }
+.modalImage:hover{
+  cursor: pointer;
+}

@@ -17,7 +17,7 @@ function ContactPage() {
                 });
     }, [])
     return (
-        <div style={{display:'flex',height:'100vh',flexDirection:'column',textAlign:'left',justifyContent:'flex-end'}}>
+        <div className={"animate__animated animate__slideInRight"} style={{display:'flex',height:'100vh',flexDirection:'column',textAlign:'left',justifyContent:'flex-end'}}>
                 <p>A. 04774 서울특별시 성동구 성덕정길 25 2층</p>
                 <p>E. mail@viron.kr</p>
              <div id="map" style={{width:"840px",height:"400px",marginBottom:'5rem'}}></div>

@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import firebase from '../../firebase'
-import {CardColumns,Card} from 'react-bootstrap'
+import {CardColumns,Card,Spinner} from 'react-bootstrap'
 import {Link,useLocation} from 'react-router-dom'
 function ProjectsPage() {
     const [year, setYear] = useState("")
     const [projectURLs, setProjectURLs] = useState([])
+    const [loading, setLoading] = useState(false)
     const location = useLocation();
     useEffect(() => {
         setYear("")
@@ -27,13 +28,18 @@ function ProjectsPage() {
             alert(error)
         }
     }, [location])
-
+    setTimeout(() => {
+        setLoading(true)
+    }, 2000);
     return (
         <div>
-            <CardColumns style={{padding:'3rem'}}>
+            <Spinner style={{display:!loading ? 'block' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner>
+            <CardColumns style={{padding:'3rem',display:loading ? 'block' : 'none'}}>
                     {
                         projectURLs.map((item)=>(
-                            <Link className={"projectLink"} style={{textDecoration:'none',color:'black',boxSizing:'border-box',padding:'1rem',width:'10%'}} to={`/Project/${item.year}/${item.name}`}>
+                            <Link className={"projectLink animate__animated animate__fadeInUp animate"+Math.round(Math.random()*7)} style={{textDecoration:'none',color:'black',boxSizing:'border-box',padding:'1rem',width:'10%'}} to={`/Project/${item.year}/${item.name}`}>
                                 <Card className={"projectWrapper"} style={{border:'none'}}>
                                     <Card.Img style={{filter:'grayscale(80%)'}} className={"projectImage"} variant="top" src={item.url} fluid/>
                                     <Card.Body>

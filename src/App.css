@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+body{
+  position: relative;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +38,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+.animate1{
+  animation-duration: 1s; /* don't forget to set a duration! */
+  animation-delay: 0.1s;
+}
+.animate2{
+  animation-duration: 1.15s; /* don't forget to set a duration! */
+  animation-delay: 0.3s;
+}
+.animate3{
+  animation-duration: 1.3s; /* don't forget to set a duration! */
+  animation-delay: 0.1s;
+}
+.animate4{
+  animation-duration: 1.45s; /* don't forget to set a duration! */
+  animation-delay: 0.5s;
+}
+.animate5{
+  animation-duration: 1.6s; /* don't forget to set a duration! */
+  animation-delay: 0.4s;
+}
+.animate6{
+  animation-duration: 1.75s; /* don't forget to set a duration! */
+  animation-delay: 0.2s;
+}
+.animate7{
+  animation-duration: 1.9s; /* don't forget to set a duration! */
+  animation-delay: 0.3s;
 }

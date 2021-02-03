@@ -7,9 +7,9 @@ function HomeCard({url,name}) {
     const [info, setInfo] = useState({})
     useEffect(() => {
         let projectName = name.split('_')[0]
-        let projectYear = name.split('_')[1].replace('.jpg',"")
+        let projectYear = name.split('_')[1]
         firebase.database().ref(`Projects/${projectYear}/${projectName}`).on('value',snapshot=>{
-            setInfo(snapshot.val() !== null ? snapshot.val() : "없음")
+            setInfo(snapshot.val())
         })
     }, [])
     return (
@@ -20,7 +20,7 @@ function HomeCard({url,name}) {
                 </Card>
                 <div style={{color:'black',textDecoration:'none',display:'flex',flexDirection:'column',alignItems:'flex-start'}}>
                     <h5>{name.split('_')[0]}</h5>
-                    <h6>{name.split('_')[1].replace('.jpg',"")}</h6>
+                    <h6>{name.split('_')[1]}</h6>
                 </div>
             </Link>
         </div>

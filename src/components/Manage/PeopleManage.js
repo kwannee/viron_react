@@ -56,7 +56,6 @@ function PeopleManage() {
             window.location.reload(false);
         }
     }
-    console.log(imageChanged)
     const handleDeletePeople = (e) =>{
         firebase.storage().ref(`People/${name}`).delete()
         firebase.database().ref(`People/${name}`).remove()
@@ -98,9 +97,6 @@ function PeopleManage() {
                     </Modal.Title>
                 </Modal.Header>
                 <Form style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',width:'100%'}}>
-                    <Modal.Body style={{width:'50%',margin:0,padding:0}}>
-                        <Upload imageChange={setImageChanged} submit={submit} style={{margin:0,padding:0}} part={`People`} name={name} position={position} text={text} one={true}/>
-                    </Modal.Body>
                     <Form.Group style={{width:'50%',margin:0,padding:0}} controlId="exampleForm.ControlTextarea1">
                         <Form.Label>이름</Form.Label>
                         <textarea onChange={handleNameChange} style={{height:'50px',width:'100%'}} value={name}></textarea>
@@ -113,6 +109,9 @@ function PeopleManage() {
                         <Form.Label>소개글</Form.Label>
                         <textarea onChange={handleTextChange} style={{height:'300px',width:'100%'}} value={text}></textarea>
                     </Form.Group>
+                    <Modal.Body style={{width:'50%',margin:0,padding:0}}>
+                        <Upload imageChange={setImageChanged} submit={submit} style={{margin:0,padding:0}} part={`People`} name={name} position={position} text={text} one={true}/>
+                    </Modal.Body>
                     <div>
                     <Button onClick={()=>setSubmit(true)} style={{margin:'2rem 2rem'}} variant="primary">
                         제출

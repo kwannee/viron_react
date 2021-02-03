@@ -21,9 +21,9 @@ function HomePage() {
         <div>
              <Carousel pause={false} interval={4500} style={{margin:'0 auto',overflow:'hidden'}}>
                 {imageUrl.map((url,idx) =>(
-                <Carousel.Item key={idx}>
-                    <HomeCard url={url.url} name={url.name}/>
-                </Carousel.Item>
+                    <Carousel.Item key={idx}>
+                        <HomeCard url={url.url} name={url.name}/>
+                    </Carousel.Item>
                 ))
                 }
             </Carousel>

@@ -4,13 +4,14 @@ import "firebase/database"
 import "firebase/storage"
 
 var firebaseConfig = {
-    apiKey: "AIzaSyDMRZJneEjRXW5Y1y-ulg9xxeuySSYsOG8",
-    authDomain: "viron-react.firebaseapp.com",
-    projectId: "viron-react",
-    storageBucket: "viron-react.appspot.com",
-    messagingSenderId: "412108273435",
-    appId: "1:412108273435:web:d2599e3164411fcf1ac5be"
-  };
+  apiKey: "AIzaSyBDg620nc4dxyEfKQTEfVMaiaXomzzZ5J0",
+  authDomain: "viron-57745.firebaseapp.com",
+  databaseURL: "https://viron-57745.firebaseio.com",
+  projectId: "viron-57745",
+  storageBucket: "viron-57745.appspot.com",
+  messagingSenderId: "849415377120",
+  appId: "1:849415377120:web:e8eb93fc8fe48101e54085"
+};
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
- export default firebase;
+firebase.initializeApp(firebaseConfig);
+export default firebase;

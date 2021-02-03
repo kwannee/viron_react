@@ -21,13 +21,14 @@ import LoginPage from './components/Manage/LoginPage'
 import ManagePage from './components/Manage/ManagePage'
 import logo from './commons/logo.png'
 import {Image,Navbar,Nav} from 'react-bootstrap'
-function App(props) {
+function App() {
   let location = useLocation().pathname
   return (
     <div className="App" style={{display:'flex'}}>
       {
         (location !== '/login' && location !=='/manage') &&
         <Navbar style={{
+          fontFamily:'Nanum Gothic, sans-serif',
           position:'sticky',
           left:0,
           top:0,
@@ -66,15 +67,15 @@ function App(props) {
       <div style={{width:(location !== '/manage' && location !== '/login') ? '73%' : '100%',overflowX:'hidden'}}>
         <Switch>
           <Route exact path="/" component={HomePage}/>
-          <Route exact path="/Philosophy" component={PhilosophyPage}/>
-          <Route exact path="/Projects/:projectYear" component={ProjectsPage}/>
-          <Route exact path="/Project/:projectYear/:projectName" component={ProjectPage}/>
-          <Route exact path="/Contact" component={ContactPage}/>
-          <Route exact path="/People" component={PeoplePage}/>
-          <Route exact path="/News" component={NewsPage}/>
-          <Route exact path="/License" component={LicensePage}/>
-          <Route exact path="/login" component={LoginPage}/>
-          <Route exact path="/Manage" component={ManagePage}/>
+          <Route  path="/Philosophy" component={PhilosophyPage}/>
+          <Route  path="/Projects/:projectYear" component={ProjectsPage}/>
+          <Route  path="/Project/:projectYear/:projectName" component={ProjectPage}/>
+          <Route  path="/Contact" component={ContactPage}/>
+          <Route  path="/People" component={PeoplePage}/>
+          <Route  path="/News" component={NewsPage}/>
+          <Route  path="/License" component={LicensePage}/>
+          <Route  path="/login" component={LoginPage}/>
+          <Route  path="/Manage" component={ManagePage}/>
         </Switch>
       </div>
     </div>

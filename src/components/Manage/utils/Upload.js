@@ -29,10 +29,15 @@ function Upload({submit,part,handleSubmit,one,name,position,text,year,imageChang
             })
         }
         //name으로 해놔서 name 바뀔때마다 계속 파이어베이스 접근하고 있음 뭔가 대책이 필요함 지금은 머리가 안돌아가서모르겠음
-    }, [])
+    }, [name])
+    async function fetchImages(part){
+
+    } 
     const dropHandler = async (files) => {
         try{
-            imageChange(true)
+            if(imageChange){
+                imageChange(true)
+            }
             for(let idx = 0; idx <files.length; idx++){
                 let reader = new FileReader();
                 let file = files[idx]
@@ -40,12 +45,11 @@ function Upload({submit,part,handleSubmit,one,name,position,text,year,imageChang
                     if(part === "Projects"){    
                         setUrls(prev => [...prev,{url:reader.result,name:files[idx].name}])
                         setUploadUrl(prev =>[...prev,{url:reader.result,name:files[idx].name,file:file}])
-                        console.log(urls)
                     }else if(part === "Philosophy"){
                         setUrls(prev => [...prev,{url:reader.result,name:files[idx].name}])
                         setUploadUrl(prev =>[...prev,{url:reader.result,name:files[idx].name,file:file}])
                     }
-                    else if(part==="People"){
+                    else{
                         setUrls({url:reader.result,name:files[idx].name,file:file})
                         setUploadUrl({url:reader.result,name:name,file:file})
                     }
