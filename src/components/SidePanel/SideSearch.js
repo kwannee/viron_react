@@ -1,9 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {InputGroup,FormControl} from 'react-bootstrap'
-import {Link,useHistory} from 'react-router-dom'
+import {Link,useHistory,useLocation} from 'react-router-dom'
 import {BiSearchAlt2} from 'react-icons/bi'
 
 function SideSearch() {
+    let location = useLocation().pathname.split('/')[1]
     const history = useHistory()
     const [search, setSearch] = useState("")
     const handleSubmit = () =>{
@@ -17,6 +18,9 @@ function SideSearch() {
     const handleSubmitClick = () =>{
         handleSubmit(document.getElementsByClassName("searchForm")[0].value)
     }
+    useEffect(() => {
+        document.getElementsByClassName("searchForm")[0].value=""
+    }, [location])
     return (
         <div>
             <InputGroup onKeyDown={handleKeyDown} onSubmit={handleSubmit} className="mb-3">
