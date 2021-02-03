@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useRef} from 'react'
 import firebase from '../../firebase'
 import {Card,Container,Row,Col,Image,Spinner} from 'react-bootstrap'
 import SlideToggle from "react-slide-toggle";
@@ -24,9 +24,15 @@ export default function PeoplePage() {
             e.target.classList.remove('colorful')
         }
     }
-    setTimeout(() => {
-        setLoading(true)
-    }, 1500);
+    const isFirstRender = React.useRef(true);
+    useEffect(() => {
+        if (isFirstRender.current) {
+        isFirstRender.current = false;
+        return;
+        }
+    /*business logic for component did update*/
+    setLoading(true)
+    });
     return (
         <div style={{display:'flex',justifyContent:'center',alignItems:'center', margin:'1  rem'}}>
             <Spinner style={{display:!loading ? 'flex' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">

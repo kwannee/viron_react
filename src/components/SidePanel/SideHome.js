@@ -7,7 +7,7 @@ function SideHome() {
     
     return (
         <div>
-            <h5 style={{borderBottom:'1px solid black'}}>VIRON</h5>
+            <h5 style={{borderBottom:'1px solid black',fontWeight:'bold'}}>VIRON</h5>
             <Nav className="mr-auto" 
             style={{
                 display:'flex',

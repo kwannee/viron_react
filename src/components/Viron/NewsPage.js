@@ -15,10 +15,7 @@ function NewsPage() {
     }, [])
     return (
         <div >
-            {/* <Spinner style={{display:!loading ? 'block' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
-                <span className="sr-only">Loading...</span>
-            </Spinner> */}
-            <Container className={"animate__animated animate__slideInRight"} style={{padding:0,margin:0,maxWidth:'unset',paddingRight:'2rem'}}>
+            <Container className={"animate__animated animate__fadeIn"} style={{padding:0,margin:0,maxWidth:'unset',paddingRight:'2rem'}}>
                 <Row>
                 {
                     fetched.map((item,idx) => (

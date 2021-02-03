@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import firebase from '../../firebase'
 import {CardColumns,Card,Spinner} from 'react-bootstrap'
 import {Link,useLocation} from 'react-router-dom'
@@ -28,15 +28,24 @@ function ProjectsPage() {
             alert(error)
         }
     }, [location])
-    setTimeout(() => {
-        setLoading(true)
-    }, 2000);
+    // setTimeout(() => {
+    //     setLoading(true)
+    // }, 2000);
+    // const isFirstRender = useRef(true);
+    // useEffect(() => {
+    //     if (isFirstRender.current) {
+    //     isFirstRender.current = false;
+    //     return;
+    //     }
+    //     /*business logic for component did update*/
+    //     setLoading(true)
+    // });
     return (
         <div>
-            <Spinner style={{display:!loading ? 'block' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
+            {/* <Spinner style={{display:!loading ? 'block' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
                 <span className="sr-only">Loading...</span>
-            </Spinner>
-            <CardColumns style={{padding:'3rem',display:loading ? 'block' : 'none'}}>
+            </Spinner> */}
+            <CardColumns style={{padding:'3rem'}}>
                     {
                         projectURLs.map((item)=>(
                             <Link className={"projectLink animate__animated animate__fadeInUp animate"+Math.round(Math.random()*7)} style={{textDecoration:'none',color:'black',boxSizing:'border-box',padding:'1rem',width:'10%'}} to={`/Project/${item.year}/${item.name}`}>

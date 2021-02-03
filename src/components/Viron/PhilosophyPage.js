@@ -19,13 +19,13 @@ function PhilosophyPage() {
     }, [])
     setTimeout(() => {
         setLoading(true)
-    }, 1500);
+    }, 500);
     return (
         <div style={{display:'flex',justifyContent:'center',alignItems:'center', margin:'3rem'}}>
             <Spinner style={{display:!loading ? 'flex' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
                 <span className="sr-only">Loading...</span>
             </Spinner>
-            <div className={"animate__animated animate__slideInRight"} style={{display:loading ? 'block' : 'none'}}>
+            <div className={"animate__animated animate__fadeIn"} style={{display:loading ? 'block' : 'none'}}>
                 <Carousel pause={false} interval={2000} style={{margin:'0 auto', width:'100%',height:'50%'}}>
                     {imageUrl.map((url,idx) =>(
                         <Carousel.Item key={idx}>
