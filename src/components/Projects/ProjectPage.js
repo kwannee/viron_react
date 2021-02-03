@@ -21,7 +21,6 @@ function ProjectPage() {
             let path = location.pathname.split('/')
             path[1] = "Projects"
             path = path.join('/')+'/'
-            console.log(path)
             firebase.storage().ref(path).listAll().then(res =>{
                 res.items.forEach(async (item)=>{
                     let url = await item.getDownloadURL()

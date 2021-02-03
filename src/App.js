@@ -21,6 +21,7 @@ import LoginPage from './components/Manage/LoginPage'
 import ManagePage from './components/Manage/ManagePage'
 import logo from './commons/logo.png'
 import {Image,Navbar,Nav} from 'react-bootstrap'
+import SearchPage from './components/Projects/SearchPage';
 function App() {
   let location = useLocation().pathname
   return (
@@ -76,6 +77,7 @@ function App() {
           <Route  path="/License" component={LicensePage}/>
           <Route  path="/login" component={LoginPage}/>
           <Route  path="/Manage" component={ManagePage}/>
+          <Route  path="/Search/:search" component={SearchPage}/>
         </Switch>
       </div>
     </div>
