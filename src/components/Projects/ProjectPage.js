@@ -58,21 +58,25 @@ function ProjectPage() {
                     ))
                     }
                 </Carousel>
-                <Modal size="xl" centered show={show} onHide={handleClose} style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-                    <Modal.Body>
+                <Modal size="xl" centered show={show} onHide={handleClose} >
+                    <Modal.Body style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
                         <Image  fluid src={currentImage}/>
                     </Modal.Body>
                 </Modal>
                 <div style={{display:'flex',margin:'0 auto',textAlign:'left',flexDirection:'row',justifyContent:'space-between'}}>
                         <div style={{width:'27%',display:'flex', flexDirection:'column',wordBreak:'break-word'}}>
                             <div style={{borderBottom:'1px solid black',fontWeight:'bold',fontSize:'20px',paddingBottom:'1rem'}}>DETAILS</div>
-                            <div><span style={{fontWeight:'bold'}}>Subtitle </span> {info["subtitle"]}</div>
                             <div><span style={{fontWeight:'bold'}}>Area </span> {info["area"]}</div>
                             <div><span style={{fontWeight:'bold'}}>Status </span> {info["status"]}</div>
                             <div><span style={{fontWeight:'bold'}}>Location </span> {info["location"]}</div>
                             <div><span style={{fontWeight:'bold'}}>Tag </span> <br/>{info["keyword"]}</div>
                         </div>
-                        <div style={{fontSize:'30px', paddingBottom:'1rem'}}>{info["name"]}</div>
+                        <div style={{display:'flex',flexDirection:'column'}}>
+                            <div style={{fontSize:'30px',fontWeight:'bold',fontFamily:'Nanum Gothic'}}>{info["name"]}</div>
+                            <div style={{fontSize:'20px', paddingBottom:'1rem',color:'gray',textAlign:'right'}}>{info["subtitle"]}</div>
+                        </div>
+
+
                         {/* <div style={{width:'65%',textIndent:'1rem'}}>
                             
                             <div>

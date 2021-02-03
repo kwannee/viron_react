@@ -53,7 +53,7 @@ function ProjectsPage({info}) {
                                 <Card className={"projectWrapper"} style={{border:'none'}}>
                                     <Card.Img style={{filter:'grayscale(80%)'}} className={"projectImage"} variant="top" src={item.url} fluid/>
                                     <Card.Body>
-                                    <Card.Title style={{borderBottom:'1px solid gray'}}>{item.name}</Card.Title>
+                                    <Card.Title style={{borderBottom:'1px solid gray',fontWeight:'bold'}}>{item.name}</Card.Title>
                                     <Card.Text>
                                         {
                                             item.keyword
