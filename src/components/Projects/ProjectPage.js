@@ -49,7 +49,7 @@ function ProjectPage() {
                     <Carousel.Item className={'projectImg'} key={idx}>
                         <img
                             onClick={handleShow}
-                            style={{paddingBottom:'1rem',objectFit:'cover',width:'100%',height:'500px'}}
+                            style={{paddingBottom:'1rem',objectFit:'cover',width:'100%',height:'70vh'}}
                             key={idx}
                             alt={logo}
                             src={url}
@@ -72,7 +72,7 @@ function ProjectPage() {
                             <div><span style={{fontWeight:'bold'}}>Tag </span> <br/>{info["keyword"]}</div>
                         </div>
                         <div style={{display:'flex',flexDirection:'column'}}>
-                            <div style={{fontSize:'30px',fontWeight:'bold',fontFamily:'Nanum Gothic'}}>{info["name"]}</div>
+                            <div style={{fontSize:'30px',fontWeight:'bold'}}>{info["name"]}</div>
                             <div style={{fontSize:'20px', paddingBottom:'1rem',color:'gray',textAlign:'right'}}>{info["subtitle"]}</div>
                         </div>
 

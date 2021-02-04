@@ -13,9 +13,15 @@ function NewsPage() {
             setFetched(result["data"])
         })
     }, [])
+    setTimeout(() => {
+        setLoading(true)
+    }, 1200);
     return (
-        <div >
-            <Container className={"animate__animated animate__fadeIn"} style={{padding:0,margin:0,maxWidth:'unset',paddingRight:'2rem'}}>
+        <div style={{display:'flex',justifyContent:'center',alignItems:'center', margin:'1  rem'}}>
+            <Spinner style={{display:!loading ? 'flex' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner>
+            <Container className={"animate__animated animate__fadeIn"} style={{padding:0,margin:0,maxWidth:'unset',paddingRight:'2rem',display:loading ? 'block' : 'none'}}>
                 <Row>
                 {
                     fetched.map((item,idx) => (

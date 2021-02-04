@@ -19,7 +19,7 @@ function PhilosophyPage() {
     }, [])
     setTimeout(() => {
         setLoading(true)
-    }, 500);
+    }, 1200);
     return (
         <div style={{display:'flex',justifyContent:'center',alignItems:'center', margin:'3rem'}}>
             <Spinner style={{display:!loading ? 'flex' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">

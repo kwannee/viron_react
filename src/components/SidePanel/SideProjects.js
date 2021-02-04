@@ -32,7 +32,7 @@ function SideProjects() {
     });
     return (
         <div>
-            <h5 style={{borderBottom:'1px solid black',fontWeight:'bold'}}>Projects</h5>
+            <p style={{borderBottom:'1px solid black',fontWeight:'bold',fontSize:'1.3rem',margin:0}}>Projects</p>
             <Nav className="mr-auto" 
             style={{
                 display:'flex',
@@ -43,7 +43,7 @@ function SideProjects() {
                     {
                         years.length > 0 && years.map((year,idx)=>(
                             <Nav.Link style={{padding:0,paddingLeft:'1rem'}}>
-                                <Link className={year} style={{color:'black'}} to={`/Projects/${year}`}>{year}</Link>
+                                <Link className={year} style={{color:'black',fontSize:'1.1rem'}} to={`/Projects/${year}`}>{year}</Link>
                             </Nav.Link>
                         ))
                     }

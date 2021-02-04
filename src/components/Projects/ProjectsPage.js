@@ -32,21 +32,15 @@ function ProjectsPage({info}) {
             }
         }
     }, [location,info])
-    const isFirstRender = React.useRef(true);
-    useEffect(() => {
-        if (isFirstRender.current) {
-        isFirstRender.current = false;
-        return;
-        }
-    /*business logic for component did update*/
-       setLoading(true)
-    });
+    setTimeout(() => {
+        setLoading(true)
+    }, 1200);
     return (
         <div>
             <Spinner style={{display:!loading ? 'block' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
                 <span className="sr-only">Loading...</span>
             </Spinner>
-            <CardColumns style={{padding:'3rem'}}>
+            <CardColumns style={{padding:'3rem',display:loading ? 'block' : 'none'}}>
                     {
                         projectURLs.map((item)=>(
                             <Link className={"projectLink animate__animated animate__fadeInUp animate"+Math.round(Math.random()*7)} style={{textDecoration:'none',color:'black',boxSizing:'border-box',padding:'1rem',width:'10%'}} to={`/Project/${item.year}/${item.name}`}>
@@ -60,8 +54,11 @@ function ProjectsPage({info}) {
                                             ? item.keyword.split(',').map(item=>(
                                                 <span className={"projectText"} style={{color:'gray',borderBottom:'1px solid gray',margin:'5px'}}>{item}</span>
                                             ))
-                                            : <span>This is a longer card with supporting text below as a natural lead-in to
-                                            additional content. This content is a little bit longer.</span>
+                                            : <span> There is a pleasure in the pathless woods,
+                                            There is a rapture on the lonely shore,
+                                            There is society, where none intrudes,
+                                            By the deep sea, and music in its roar:
+                                            I love not man the less, but Nature more</span>
                                         }
                                     </Card.Text>
                                     </Card.Body>

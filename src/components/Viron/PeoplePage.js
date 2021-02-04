@@ -24,21 +24,24 @@ export default function PeoplePage() {
             e.target.classList.remove('colorful')
         }
     }
-    const isFirstRender = React.useRef(true);
-    useEffect(() => {
-        if (isFirstRender.current) {
-        isFirstRender.current = false;
-        return;
-        }
-    /*business logic for component did update*/
-    setLoading(true)
-    });
+    // const isFirstRender = React.useRef(true);
+    // useEffect(() => {
+    //     if (isFirstRender.current) {
+    //     isFirstRender.current = false;
+    //     return;
+    //     }
+    //     /*business logic for component did update*/
+    //     setLoading(true)
+    // });
+    setTimeout(() => {
+        setLoading(true)
+    }, 1200);
     return (
         <div style={{display:'flex',justifyContent:'center',alignItems:'center', margin:'1  rem'}}>
             <Spinner style={{display:!loading ? 'flex' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
                 <span className="sr-only">Loading...</span>
             </Spinner>
-            <Container fluid style={{display:loading ? 'flex' : 'none',justifyContent:'center',alignItems:'center',margin:0,padding:0,paddingTop:'1rem',overflow:'hidden'}}>
+            <Container fluid style={{display:loading ? 'flex' : 'none',justifyContent:'center',alignItems:'center',margin:0,padding:0,paddingTop:'1rem',overflow:'hidden',marginBottom:'15rem'}}>
                <Row style={{margin:0}}>
                {
                 imageUrl.map((info,idx)=>(

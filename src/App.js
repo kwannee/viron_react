@@ -22,12 +22,13 @@ import ManagePage from './components/Manage/ManagePage'
 import logo from './commons/logo.png'
 import {Image,Navbar,Nav} from 'react-bootstrap'
 import SearchPage from './components/Projects/SearchPage';
+import WelcomePage from './components/Welcome/WelcomePage';
 function App() {
   let location = useLocation().pathname
   return (
     <div className="App" style={{display:'flex'}}>
       {
-        (location !== '/login' && location !=='/manage') &&
+        (location !== '/login' && location !=='/manage' && location !=='/') &&
         <Navbar style={{
           fontFamily:'Nanum Gothic, sans-serif',
           position:'sticky',
@@ -53,21 +54,22 @@ function App() {
                 <Image
                   src={logo} 
                   onDragStart={(e)=>{e.preventDefault()}}
-                  style={{paddingRight:'2rem',width:'200px'}} />
+                  style={{paddingRight:'2rem',width:'14rem'}} />
               </Link>
-            </Navbar.Brand>
+            </Navbar.Brand>   
             <SideSearch />
             <SideHome/>
             <SideProjects/>
             <SideOffice/>
-                      <div style={{fontSize:'13px',color:'gray',marginLeft:'1rem'}}>Copyright © 2020 VIRON. ALL RIGHTS RESERVED</div>
+                      <div style={{fontSize:'0.8rem',color:'gray',marginLeft:'1rem'}}>Copyright © 2020 VIRON. ALL RIGHTS RESERVED</div>
           </Nav>
 
         </Navbar>
       }
-      <div style={{width:(location !== '/manage' && location !== '/login') ? '73%' : '100%',overflowX:'hidden'}}>
+      <div style={{width:(location !== '/manage' && location !== '/login' && location !== '/') ? '73%' : '100%',overflowX:'hidden'}}>
         <Switch>
-          <Route exact path="/" component={HomePage}/>
+          <Route  exact path="/" component={WelcomePage}/>
+          <Route  path="/Home" component={HomePage}/>
           <Route  path="/Philosophy" component={PhilosophyPage}/>
           <Route  path="/Projects/:projectYear" component={ProjectsPage}/>
           <Route  path="/Project/:projectYear/:projectName" component={ProjectPage}/>
