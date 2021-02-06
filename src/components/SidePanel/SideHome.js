@@ -6,7 +6,7 @@ function SideHome() {
     let location = useLocation().pathname.replace('/','')
     
     return (
-        <div>
+        <div className={"sideMenu"}>
             <p style={{borderBottom:'1px solid black',fontWeight:'bold',fontSize:'1.3rem',margin:0}}>VIRON</p>
             <Nav className="mr-auto" 
             style={{

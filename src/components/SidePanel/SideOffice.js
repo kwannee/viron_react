@@ -4,7 +4,7 @@ import {Link,useLocation} from 'react-router-dom'
 function SideOffice() {
     let location = useLocation().pathname.replace('/','')
     return (
-        <div>
+        <div className={"sideMenu"}>
             <p style={{borderBottom:'1px solid black',fontWeight:'bold',fontSize:'1.3rem',margin:0}}>Office</p>
             <Nav className="mr-auto" 
             style={{

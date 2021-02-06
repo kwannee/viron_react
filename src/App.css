@@ -10,12 +10,6 @@ body{
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -67,3 +61,59 @@ body{
   animation-duration: 1.9s; /* don't forget to set a duration! */
   animation-delay: 0.3s;
 }
+.hamburger-react{
+  display: none;
+}
+@media screen and (max-width: 850px){
+  .App{
+    flex-direction: column !important;
+  }
+  nav{
+    width: 100vw !important;
+    height: unset !important;
+    margin-bottom: 1rem;
+    position: relative !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 1rem !important;
+    z-index: 100 !important;
+    
+  }
+  .navbar-brand img{
+    display:none
+  }
+  .slideToggle{
+    display: none;
+  }
+  .navbar > .navbar-nav{
+    background-color: white;
+    margin-bottom: 1rem;
+  }
+  .mainPage{
+    width: 100vw !important;
+  }
+  .mainPage .card-img{
+    height: 50vh !important;
+    padding: 0 !important;
+  }
+  .hamburger-react{
+    display: block !important;
+  }
+  .copyright{
+    display: none !important;
+  }
+  .sideSearch{
+    display: none !important;
+  }
+  .row{
+    justify-content: center;
+  }
+  .vironMobile{
+    display:block !important
+  }
+}
+/* ::selection{
+  color:teal;
+  background-color: teal;
+} */

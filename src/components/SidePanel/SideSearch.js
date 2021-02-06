@@ -22,7 +22,7 @@ function SideSearch() {
         document.getElementsByClassName("searchForm")[0].value=""
     }, [location])
     return (
-        <div>
+        <div className={"sideSearch"}>
             <InputGroup onKeyDown={handleKeyDown} onSubmit={handleSubmit} className="mb-3">
                 <FormControl
                 className={"searchForm"}

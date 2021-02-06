@@ -24,6 +24,7 @@ function ProjectsManage() {
     const [plusShow, setPlusShow] = useState(false)
     const [imageChanged, setImageChanged] = useState(false)
     const [deleteShow, setDeleteShow] = useState(false);
+    const [status, setStatus] = useState("")
     useEffect(() => {
         firebase.storage().ref('Projects/').listAll().then(res=>{
             for(let i = 0; i < res.prefixes.length; i++){
@@ -98,13 +99,13 @@ function ProjectsManage() {
             keyword:keywords,
             location:location,
             description:description,
-            area:area
+            area:area,
+            status:status
         })
         if(!imageChanged){
             window.location.reload(false);
         }
     }
-    console.log(newYear)
     return (
         <div style={{}}>
             <div style={{display:'flex',justifyContent:'flex-start',width:'50%',margin:'0 auto',alignItems:'center'}}>
@@ -174,6 +175,10 @@ function ProjectsManage() {
                     <Form.Group style={{width:'50%',margin:0,padding:0,display:'flex',flexDirection:'column'}} controlId="exampleForm.ControlTextarea1">
                         <Form.Label>면적</Form.Label>
                         <textarea onChange={(e)=>setArea(e.target.value)} style={{height:'30px',width:'100%'}} value={area}></textarea>
+                    </Form.Group>
+                    <Form.Group style={{width:'50%',margin:0,padding:0,display:'flex',flexDirection:'column'}} controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>상태</Form.Label>
+                        <textarea onChange={(e)=>setStatus(e.target.value)} style={{height:'30px',width:'100%'}} value={status}></textarea>
                     </Form.Group>
                     </div>
                     <Form.Group style={{width:'50%',margin:0,padding:0}} controlId="exampleForm.ControlTextarea1">

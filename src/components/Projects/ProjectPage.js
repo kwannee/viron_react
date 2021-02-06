@@ -35,9 +35,16 @@ function ProjectPage() {
         }
 
     }, [])
-    setTimeout(() => {
-        setLoading(true)
-    }, 1000);
+    const isFirstRender = React.useRef(true);
+    useEffect(() => {
+        if (isFirstRender.current) {
+        isFirstRender.current = false;
+        return;
+        }
+        setTimeout(() => {
+            setLoading(true)
+        }, 500);
+    });
     return (
         <div style={{height:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
             <Spinner style={{display:!loading ? 'block' : 'none',position:'absolute',top:'50%',left:'62%'}} animation="border" role="status">
@@ -66,9 +73,9 @@ function ProjectPage() {
                 <div style={{display:'flex',margin:'0 auto',textAlign:'left',flexDirection:'row',justifyContent:'space-between'}}>
                         <div style={{width:'27%',display:'flex', flexDirection:'column',wordBreak:'break-word'}}>
                             <div style={{borderBottom:'1px solid black',fontWeight:'bold',fontSize:'20px',paddingBottom:'1rem'}}>DETAILS</div>
-                            <div><span style={{fontWeight:'bold'}}>Area </span> {info["area"]}</div>
-                            <div><span style={{fontWeight:'bold'}}>Status </span> {info["status"]}</div>
-                            <div><span style={{fontWeight:'bold'}}>Location </span> {info["location"]}</div>
+                            <div><span style={{fontWeight:'bold'}}>Area    </span> <var>{info["area"]}m<sup>2</sup></var></div>
+                            <div><span style={{fontWeight:'bold'}}>Status    </span> {info["status"]}</div>
+                            <div><span style={{fontWeight:'bold'}}>Location    </span> {info["location"]}</div>
                             <div><span style={{fontWeight:'bold'}}>Tag </span> <br/>{info["keyword"]}</div>
                         </div>
                         <div style={{display:'flex',flexDirection:'column'}}>

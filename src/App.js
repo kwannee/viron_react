@@ -23,8 +23,28 @@ import logo from './commons/logo.png'
 import {Image,Navbar,Nav} from 'react-bootstrap'
 import SearchPage from './components/Projects/SearchPage';
 import WelcomePage from './components/Welcome/WelcomePage';
+import {useState,useEffect} from 'react'
+import { Squash as Hamburger } from 'hamburger-react'
+import $ from 'jquery'
+import jQuery from "jquery";
+window.$ = window.jQuery = jQuery;
+
 function App() {
   let location = useLocation().pathname
+  const [isOpen, setOpen] = useState(false)
+  useEffect(() => {
+    $(document).on('click','.hamburger-react',(e)=>{
+      $(".slideToggle").slideToggle()
+  })
+  }, [])
+  useEffect(() => {
+    if(window.innerWidth < 850){
+      $(document).on('click','.sideMenu',(e)=>{
+        $(".slideToggle").slideToggle()
+        setOpen(false)
+      })
+    }
+  }, [window.innerWidth])
   return (
     <div className="App" style={{display:'flex'}}>
       {
@@ -48,25 +68,30 @@ function App() {
              flexDirection:'column',
              textAlign:'left',
              }}>
-
+            
             <Navbar.Brand>
-              <Link to={'/'}>
+              <Link to={'/Home'}>
                 <Image
                   src={logo} 
                   onDragStart={(e)=>{e.preventDefault()}}
                   style={{paddingRight:'2rem',width:'14rem'}} />
               </Link>
-            </Navbar.Brand>   
+            </Navbar.Brand>
+            <div className={"slideToggle"}>   
             <SideSearch />
-            <SideHome/>
+            <SideHome />
             <SideProjects/>
             <SideOffice/>
-                      <div style={{fontSize:'0.8rem',color:'gray',marginLeft:'1rem'}}>Copyright © 2020 VIRON. ALL RIGHTS RESERVED</div>
+            <div className={"copyright"} style={{fontSize:'0.8rem',color:'gray',marginLeft:'1rem'}}>Copyright © 2020 VIRON. ALL RIGHTS RESERVED</div>
+            </div>
           </Nav>
-
+          <div style={{display:'flex',width:'100vw'}}>
+            <Link className={'vironMobile'} style={{color:'black',width:'45%',margin:0,padding:0,textAlign:'left',fontSize:'2rem',textDecoration:'none',paddingLeft:'1rem',display:'none'}} to={'/Home'}>VIRON</Link> 
+            <Hamburger toggled={isOpen} toggle={setOpen} />
+          </div>
         </Navbar>
       }
-      <div style={{width:(location !== '/manage' && location !== '/login' && location !== '/') ? '73%' : '100%',overflowX:'hidden'}}>
+      <div className={"mainPage"} style={{width:(location !== '/manage' && location !== '/login' && location !== '/') ? '73%' : '100%',overflowX:'hidden'}}>
         <Switch>
           <Route  exact path="/" component={WelcomePage}/>
           <Route  path="/Home" component={HomePage}/>

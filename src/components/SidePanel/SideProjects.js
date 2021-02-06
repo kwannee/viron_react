@@ -31,7 +31,7 @@ function SideProjects() {
         }
     });
     return (
-        <div>
+        <div className={"sideMenu"}>
             <p style={{borderBottom:'1px solid black',fontWeight:'bold',fontSize:'1.3rem',margin:0}}>Projects</p>
             <Nav className="mr-auto" 
             style={{
